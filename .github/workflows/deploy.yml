@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch:
 
 permissions:
   contents: write
@@ -30,7 +29,9 @@ jobs:
           extended: true
 
       - name: Build Web
-        run: hugo --minify
+        env:
+          HUGO_ENV: production
+        run: hugo --minify --gc --cleanDestinationDir --baseURL "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
 
       - name: Deploy Web (to this repo gh-pages)
         uses: peaceiris/actions-gh-pages@v4
@@ -38,4 +39,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: ./public
-          commit_message: ${{ github.event.head_commit.message }}
+          commit_message: deploy: ${{ github.sha }}
