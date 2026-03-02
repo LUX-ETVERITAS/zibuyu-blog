@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>zibuyu的blog</title><link>https://example.org/</link><description>Recent content on zibuyu的blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sun, 01 Mar 2026 19:53:43 +0800</lastBuildDate><atom:link href="https://example.org/index.xml" rel="self" type="application/rss+xml"/><item><title>博客搭建</title><link>https://example.org/post/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link><pubDate>Sun, 01 Mar 2026 19:53:43 +0800</pubDate><guid>https://example.org/post/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid><description>&lt;p&gt;使用 &lt;code&gt;hugo&lt;/code&gt; 和 &lt;code&gt;stack&lt;/code&gt; 主题, 托管到 &lt;code&gt;Github Pages&lt;/code&gt;
+新建博客 &lt;code&gt;hugo new content content/post/&amp;lt;name&amp;gt;.md&lt;/code&gt;&lt;/p&gt;</description></item><item><title>Scoop配置</title><link>https://example.org/post/scoop%E9%85%8D%E7%BD%AE/</link><pubDate>Sun, 01 Mar 2026 19:35:48 +0800</pubDate><guid>https://example.org/post/scoop%E9%85%8D%E7%BD%AE/</guid><description>&lt;p&gt;Scoop 是一个在 Windows 系统的软件安装器, 主要用于开源软件和命令行开发工具的安装, 并支持软件版本切换&lt;/p&gt;
+&lt;h2 id="安装-scoop"&gt;安装 Scoop
+&lt;/h2&gt;&lt;p&gt;需要安装 &lt;a class="link" href="https://learn.microsoft.com/zh-cn/powershell/" target="_blank" rel="noopener"
+ &gt;PowerShell&lt;/a&gt; 或者 &lt;a class="link" href="https://www.microsoft.com/en-us/download/details.aspx?id=54616" target="_blank" rel="noopener"
+ &gt;Windows PowerShell 5.1&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;设置 PowerShell 语言模式为 &lt;code&gt;FullLanguage&lt;/code&gt;:&lt;/li&gt;
+&lt;li&gt;将执行策略设置为 &lt;code&gt;RemoteSigned&lt;/code&gt; , &lt;code&gt;Unrestricted&lt;/code&gt; 或 者 &lt;code&gt;Bypass&lt;/code&gt;. 下面是设置为 &lt;code&gt;RemoteSigned&lt;/code&gt; 的命令:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-pwsh" data-lang="pwsh"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后运行以下命令安装 Scoop:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-pwsh" data-lang="pwsh"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;irm get.scoop.sh | iex
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;因为我只有一个C盘所以没有修改默认安装路径, 如果需要修改安装路径可以下载安装器并手动执行:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-pwsh" data-lang="pwsh"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;irm get.scoop.sh -outfile &lt;span style="color:#e6db74"&gt;&amp;#39;install.ps1&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;查看配置参数&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-pwsh" data-lang="pwsh"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;.\install.ps1 -?
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;scoop 和普通程序安装到D盘, 全局程序安装到F盘&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-pwsh" data-lang="pwsh"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;.\install.ps1 -ScoopDir &lt;span style="color:#e6db74"&gt;&amp;#39;D:\Applications\Scoop&amp;#39;&lt;/span&gt; -ScoopGlobalDir &lt;span style="color:#e6db74"&gt;&amp;#39;F:\GlobalScoopApps&amp;#39;&lt;/span&gt; -NoProxy
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;还可以用 &lt;code&gt;-Proxy&lt;/code&gt; 参数设置代理&lt;/p&gt;
+&lt;h2 id="安装软件"&gt;安装软件
+&lt;/h2&gt;&lt;p&gt;安装软件可以用 &lt;code&gt;scoop search &amp;lt;app&amp;gt;&lt;/code&gt; 或者 &lt;a class="link" href="https://scoop.sh/" target="_blank" rel="noopener"
+ &gt;scoop bucket&lt;/a&gt; 查找软件, 默认的 &lt;code&gt;scoop search&lt;/code&gt; 搜索速度慢, 金额已安装 &lt;code&gt;scoop-search&lt;/code&gt; 插件后搜索速度会快很多, 安装 &lt;code&gt;scoop-search&lt;/code&gt; 插件的命令是 &lt;code&gt;scoop install scoop-search&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;用 &lt;code&gt;scoop install &amp;lt;app&amp;gt;&lt;/code&gt; 安装软件 &lt;code&gt;scoop install &amp;lt;app&amp;gt;&lt;/code&gt; 如果需要全局安装可以加上 &lt;code&gt;-g&lt;/code&gt; 参数 &lt;code&gt;scoop install &amp;lt;app&amp;gt; -g&lt;/code&gt;.
+如果需要安装特定版本的软件可以用 &lt;code&gt;scoop install &amp;lt;app&amp;gt;@&amp;lt;version&amp;gt;&lt;/code&gt; 例如 &lt;code&gt;scoop install nodejs@14.21.3&lt;/code&gt; 安装 Node.js 14.17.0 版本
+其它的命令还有：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;查看已安装的软件：&lt;code&gt;scoop list&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;查看可以升级的软件：&lt;code&gt;scoop status&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;查看某一程序的网站主页：&lt;code&gt;scoop home &amp;lt;app&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;删除已安装软件的旧版本，如删除所有软件旧版本：&lt;code&gt;scoop cleanup *&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;清理软件缓存，通常是下载的软件安装包。以下命令清除所有缓存，即清空 Scoop 目录下的 cache 文件夹：&lt;code&gt;scoop cache rm *&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;切换版本，比如已经安装 Python 3.x 和 Python 2.7，想从 3.x 切换到 2.7：&lt;code&gt;scoop reset python27&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;彻底卸载软件：&lt;code&gt;scoop uninstall &amp;lt;app&amp;gt; -p&lt;/code&gt;，这个命令会删除软件的所有文件和配置
+有些在 &lt;code&gt;persist&lt;/code&gt; 目录下的软件文件使用 &lt;code&gt;scoop uninstall -p &amp;lt;app&amp;gt;&lt;/code&gt; 或者需要手动删除&lt;/li&gt;
+&lt;li&gt;升级软件：&lt;code&gt;scoop update &amp;lt;app&amp;gt;&lt;/code&gt; 升级某个软件, &lt;code&gt;scoop update *&lt;/code&gt; 升级所有软件&lt;/li&gt;
+&lt;li&gt;查看软件安装路径：&lt;code&gt;scoop which &amp;lt;app&amp;gt;&lt;/code&gt;，例如 &lt;code&gt;scoop which nodejs&lt;/code&gt; 查看 Node.js 的安装路径&lt;/li&gt;
+&lt;li&gt;查看软件版本：&lt;code&gt;scoop info &amp;lt;app&amp;gt;&lt;/code&gt;，例如 &lt;code&gt;scoop info nodejs&lt;/code&gt; 查看 Node.js 的版本信息&lt;/li&gt;
+&lt;li&gt;诊断 Scoop 安装和配置问题：&lt;code&gt;scoop checkup&lt;/code&gt;，这个命令会检查 Scoop 的安装和配置是否正确，并提供修复建议. 如果发现问题, 请根据提示进行修复即可 &lt;code&gt;scoop install 7zip innounp dark&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;停止更新软件：&lt;code&gt;scoop hold &amp;lt;app&amp;gt;&lt;/code&gt;，例如 &lt;code&gt;scoop hold nodejs&lt;/code&gt; 停止更新 Node.js 软件, 之后就不会再更新这个软件了, 如果需要恢复更新可以用 &lt;code&gt;scoop unhold &amp;lt;app&amp;gt;&lt;/code&gt; 恢复更新&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="bucket"&gt;bucket
+&lt;/h2&gt;&lt;p&gt;Scoop 的 bucket 是一个软件仓库, 包含了很多软件的安装脚本, 可以通过 &lt;code&gt;scoop bucket add &amp;lt;bucket&amp;gt;&lt;/code&gt; 添加 bucket, 例如 &lt;code&gt;scoop bucket add extras&lt;/code&gt; 添加 extras bucket, 然后就可以安装 extras bucket 中的软件了
+目前 Scoop 官方提供了以下 bucket:
+main
+extras
+versions
+nirsoft
+sysinternals
+php
+nerd-fonts
+nonportable
+java
+games
+还有一些第三方 bucket, 可以在 &lt;a class="link" href="https://scoop.sh/#/buckets" target="_blank" rel="noopener"
+ &gt;Scoop Bucket&lt;/a&gt; 页面找到
+查看已添加的 bucket 可以用 &lt;code&gt;scoop bucket list&lt;/code&gt;, 添加官方 bucket 使用 &lt;code&gt;scoop bucket add &amp;lt;bucket&amp;gt;&lt;/code&gt;，例如 &lt;code&gt;scoop bucket add extras&lt;/code&gt; 添加 extras bucket, 之后就可以安装 extras bucket 中的软件了
+如果是第三方 bucket, 可以用 &lt;code&gt;scoop bucket add &amp;lt;bucket&amp;gt; &amp;lt;url&amp;gt;&lt;/code&gt; 添加 bucket, 例如 &lt;code&gt;scoop bucket add mybucket https://github.com/myuser/mybucket&lt;/code&gt;
+删除 bucket 可以用 &lt;code&gt;scoop bucket rm &amp;lt;bucket&amp;gt;&lt;/code&gt;
+删除 bucket 后安装的软件会被保留, 但是无法再通过 scoop 更新这些软件了&lt;/p&gt;
+&lt;h2 id="镜像"&gt;镜像
+&lt;/h2&gt;&lt;p&gt;&lt;a class="link" href="https://mirrors.nju.edu.cn/" target="_blank" rel="noopener"
+ &gt;南京大学镜像&lt;/a&gt; 可以用于加速 bucket 服务（但不能加速软件下载）, 直接在搜索框输入 Scoop 就可以找到 Scoop 的镜像.
+可以通过以下命令设置 Scoop 使用南京大学镜像:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-pwsh" data-lang="pwsh"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;scoop config SCOOP_REPO https&lt;span style="color:#960050;background-color:#1e0010"&gt;:&lt;/span&gt;//mirrors.nju.edu.cn/git/scoop.git/
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;scoop bucket rm main
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;scoop bucket add main https&lt;span style="color:#960050;background-color:#1e0010"&gt;:&lt;/span&gt;//mirrors.nju.edu.cn/git/scoop-main.git/
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;scoop bucket rm extras
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;scoop bucket add extras https&lt;span style="color:#960050;background-color:#1e0010"&gt;:&lt;/span&gt;//mirrors.nju.edu.cn/git/scoop-extras.git/
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;scoop bucket rm versions
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;scoop bucket add versions https&lt;span style="color:#960050;background-color:#1e0010"&gt;:&lt;/span&gt;//mirrors.nju.edu.cn/git/scoop-versions.git/
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;scoop bucket rm nerdfonts
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;scoop bucket add nerdfonts https&lt;span style="color:#960050;background-color:#1e0010"&gt;:&lt;/span&gt;//mirrors.nju.edu.cn/git/scoop-nerdfonts.git/
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="创建自己的-bucket"&gt;创建自己的 bucket
+&lt;/h2&gt;&lt;p&gt;直接根据官方 template 创建一个新的 bucket 仓库, 修改 &lt;code&gt;appname.json&lt;/code&gt; 文件, 例如 &lt;code&gt;nodejs.json&lt;/code&gt; 文件. 然后加入 Scoop 的 bucket 列表中, 例如 &lt;code&gt;scoop bucket add mybucket &amp;lt;url&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;本文作者： zibuyu
+本文链接： &lt;a class="link" href="https://blog.imkasen.com/scoop-guide/" target="_blank" rel="noopener"
+ &gt;https://blog.imkasen.com/scoop-guide/&lt;/a&gt;
+版权声明： 本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处。&lt;/p&gt;</description></item></channel></rss>
